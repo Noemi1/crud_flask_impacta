@@ -8,15 +8,15 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cliente.db"
 db = SQLAlchemy(app)
 
 
-class Aluno(db.Model): # herdando da classe db.Model que gera a tabela
-    __tablename__='alunoHenrique'
+class Aluno(db.Model):  # herdando da classe db.Model que gera a tabela
+    __tablename__ = 'alunoHenrique'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nome = db.Column(db.String(80))
-    email = db.Column(db.String(80))
+    nome = db.Column(db.String(50))
+    email = db.Column(db.String(50))
     cep = db.Column(db.String(10))
-    logradouro = db.Column(db.String(80))
-    numero = db.Column(db.String(80))
-    bairro = db.Column(db.String(80))
+    logradouro = db.Column(db.String(50))
+    numero = db.Column(db.String(10))
+    bairro = db.Column(db.String(50))
 
     def __init__(self, nome, email, cep, logradouro, numero, bairro):
         self.nome = nome
@@ -27,10 +27,10 @@ class Aluno(db.Model): # herdando da classe db.Model que gera a tabela
         self.bairro = bairro
 
 
-@app.route("/")
+@app.route('/')
 def index():
-    clientes = Cliente.query.all()
-    return render_template("index.html", clientes=clientes)
+    clientes = Aluno.query.all()
+    return render_template("index.html", alunos=alunos)
 
 @app.route("/add", methods=['GET','POST'])
 def add():

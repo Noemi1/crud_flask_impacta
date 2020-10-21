@@ -3,27 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Cliente</title>
+    <title>Cadastro de Alunos</title>
 </head>
 <body>
-    <h1>Crud Cliente</h1>
+    <h1>Cadastro de Alunos</h1>
     <a href="/add">Adicionar Cliente</a>
     <table border="1" width="70%">
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Comentário</th>
-                <th>Ações</th>
+                <th>E-mail</th>
+                <th>CEP</th>
+                <th>Logradouro</th>
+                <th>Número</th>
+                <th>Bairro</th>
             </tr>
         </thead>    
         <tbody>
-            {% for c in clientes %}
+            {% for a in clientes %}
             <tr>
-                <td>{{c.name}}</td>
-                <td>{{c.comment}}</td>
+                <td>{{a.nome}}</td>
+                <td>{{a.email}}</td>
+                <td>{{a.cep}}</td>
+                <td>{{a.logradouro}}</td>
+                <td>{{a.numero}}</td>
+                <td>{{a.bairro}}</td>
                 <td>
-                    <a href="/edit/{{c.id}}">Editar</a>
-                    <a href="/delete/{{c.id}}">Excluir</a>      
+                    <a href="/edit/{{a.id}}">Editar</a>
+                    <a href="/delete/{{a.id}}">Excluir</a>
                 </td>
             </tr>
             {% endfor %}
