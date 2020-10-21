@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente</title>
+</head>
+<body>
+    <h1>Crud Cliente</h1>
+    <a href="/add">Adicionar Cliente</a>
+    <table border="1" width="70%">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Comentário</th>
+                <th>Ações</th>
+            </tr>
+        </thead>    
+        <tbody>
+            {% for c in clientes %}
+            <tr>
+                <td>{{c.name}}</td>
+                <td>{{c.comment}}</td>
+                <td>
+                    <a href="/edit/{{c.id}}">Editar</a>
+                    <a href="/delete/{{c.id}}">Excluir</a>      
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
