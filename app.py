@@ -13,8 +13,8 @@ class Cliente(db.Model):
     comment = db.Column(db.String(120))
 
     def __init__(self, name, comment):
-        self.name = name 
-        self.comment = comment 
+        self.name = name
+        self.comment = comment
 
 @app.route("/")
 def index():
