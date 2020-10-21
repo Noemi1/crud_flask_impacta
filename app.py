@@ -7,14 +7,25 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cliente.db"
 
 db = SQLAlchemy(app)
 
-class Cliente(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(80), unique=True)
-    comment = db.Column(db.String(120))
 
-    def __init__(self, name, comment):
-        self.name = name
-        self.comment = comment
+class Aluno(db.Model): # herdando da classe db.Model que gera a tabela
+    __tablename__='alunoHenrique'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nome = db.Column(db.String(80))
+    email = db.Column(db.String(80))
+    cep = db.Column(db.String(10))
+    logradouro = db.Column(db.String(80))
+    numero = db.Column(db.String(80))
+    bairro = db.Column(db.String(80))
+
+    def __init__(self, nome, email, cep, logradouro, numero, bairro):
+        self.nome = nome
+        self.email = email
+        self.cep = cep
+        self.logradouro = logradouro
+        self.numero = numero
+        self.bairro = bairro
+
 
 @app.route("/")
 def index():
@@ -47,6 +58,7 @@ def delete(id):
     db.session.commit() 
     return redirect(url_for('index'))
 
+
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True) 
+    app.run(debug=True)
