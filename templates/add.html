@@ -8,9 +8,17 @@
 <body>
     <h1>Cadastrar Cliente</h1>
     <form action="/add" class="container" method="POST">
-        <input type="text" name="nome"  placeholder="Digite seu nome" />
+        <input type="text" name="nome" placeholder="Digite seu nome" />
         <br />
-        <input type="text" name="comentario"  id="comentario" placeholder="Digite seu comentário" />
+        <input type="text" name="email" id="form-email" placeholder="Digite seu e-mail" />
+        <br />
+        <input type="text" name="cep" id="form-cep" placeholder="Digite seu cep" />
+        <br />
+        <input type="text" name="logradouro" id="form-logradouro" placeholder="Digite seu endereço" />
+        <br />
+        <input type="text" name="numero" id="form-numero" placeholder="Digite seu número" />
+        <br />
+        <input type="text" name="bairro" id="form-bairro" placeholder="Digite seu bairro" />
         <br />
         <input type="submit" value="Enviar" />
     </form>

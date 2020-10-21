@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///cliente.db"
-#app.config["SQLALCHEMY_DATABASE_URI"] ="postgresql://postgres:root@localhost:5432/DBImpacta"
+# app.config["SQLALCHEMY_DATABASE_URI"] ="postgresql://postgres:root@localhost:5432/DBImpacta"
 
 db = SQLAlchemy(app)
 
@@ -29,17 +29,23 @@ class Aluno(db.Model):  # herdando da classe db.Model que gera a tabela
 
 @app.route('/')
 def index():
-    clientes = Aluno.query.all()
+    alunos = Aluno.query.all()
     return render_template("index.html", alunos=alunos)
+
+
 
 @app.route("/add", methods=['GET','POST'])
 def add():
     if request.method == 'POST':
-        cliente = Cliente(request.form['nome'], request.form['comentario'])
+        aluno = Aluno(request.form['nome'], request.form['email'],
+                      request.form['cep'], request.form['logradouro',
+                      request.form['numero'], request.form['bairro'])
         db.session.add(cliente)
-        db.session.commit() 
+        db.session.commit()
         return redirect(url_for('index'))
     return render_template('add.html')
+
+'''
 
 @app.route("/edit/<int:id>", methods=['GET','POST'])
 def edit(id):
@@ -47,7 +53,7 @@ def edit(id):
     if request.method == 'POST':
         cliente.name = request.form['nome']
         cliente.comment = request.form['comentario']
-        db.session.commit() 
+        db.session.commit()
         return redirect(url_for('index'))
     return render_template('edit.html', cliente=cliente)
 
@@ -55,9 +61,9 @@ def edit(id):
 def delete(id):
     cliente = Cliente.query.get(id)
     db.session.delete(cliente)
-    db.session.commit() 
+    db.session.commit()
     return redirect(url_for('index'))
-
+'''
 
 if __name__ == '__main__':
     db.create_all()
