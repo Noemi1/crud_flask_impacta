@@ -33,14 +33,13 @@ def index():
     return render_template("index.html", alunos=alunos)
 
 
-
 @app.route("/add", methods=['GET','POST'])
 def add():
     if request.method == 'POST':
         aluno = Aluno(request.form['nome'], request.form['email'],
-                      request.form['cep'], request.form['logradouro',
+                      request.form['cep'], request.form['logradouro'],
                       request.form['numero'], request.form['bairro'])
-        db.session.add(cliente)
+        db.session.add(aluno)
         db.session.commit()
         return redirect(url_for('index'))
     return render_template('add.html')

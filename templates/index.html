@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Cadastro de Alunos</h1>
-    <a href="/add">Adicionar Cliente</a>
+    <a href="/add">Adicionar Aluno</a>
     <table border="1" width="70%">
         <thead>
             <tr>
@@ -20,14 +20,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for a in clientes %}
+            {% for a in alunos %}
             <tr>
-                <td>{{a.nome}}</td>
-                <td>{{a.email}}</td>
-                <td>{{a.cep}}</td>
-                <td>{{a.logradouro}}</td>
-                <td>{{a.numero}}</td>
-                <td>{{a.bairro}}</td>
+                <td>{{ a.nome }}</td>
+                <td>{{ a.email }}</td>
+                <td>{{ a.cep }}</td>
+                <td>{{ a.logradouro }}</td>
+                <td>{{ a.numero }}</td>
+                <td>{{ a.bairro }}</td>
                 <td>
                     <a href="/edit/{{a.id}}">Editar</a>
                     <a href="/delete/{{a.id}}">Excluir</a>
