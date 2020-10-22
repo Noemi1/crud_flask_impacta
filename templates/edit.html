@@ -3,19 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css')}}">
     <title>Edição de Alunos</title>
 </head>
 <body>
-    <h1>Editar Aluno {{ aluno.nome }}</h1>
-    <form action="/edit/{{ aluno.id }}" method="POST">
-        <input type="text" name="nome" value="{{ aluno.nome }}" />
-        <input type="text" name="email" value="{{ aluno.email }}" />
-        <input type="text" name="cep" value="{{ aluno.cep }}" />
-        <input type="text" name="logradouro" value="{{ aluno.logradouro }}" />
-        <input type="text" name="numero" value="{{ aluno.numero }}" />
-        <input type="text" name="bairro" value="{{ aluno.bairro }}" />
-        <br />
-        <input type="submit" value="Enviar" />
-    </form>
+    <div class="container">
+    <h1 align="center">Editar Aluno {{ aluno.nome }}</h1>
+        <form action="/edit/{{ aluno.id }}" method="POST">
+            <table class="table table-hover">
+                <tr>
+                    <td>{{ aluno.nome }}</td>
+                    <td><input type="text" name="nome" value="{{ aluno.nome }}" /></td>
+                </tr>
+                <tr>
+                    <td> {{ aluno.email }}</td>
+                    <td><input type="text" name="email" value="{{ aluno.email }}" /></td>
+                </tr>
+                <tr>
+                    <td> {{ aluno.cep }} </td>
+                    <td><input type="text" name="cep" value="{{ aluno.cep }}" /></td>
+                </tr>
+                <tr>
+                    <td> {{ aluno.logradouro }}</td>
+                    <td><input type="text" name="logradouro" value="{{ aluno.logradouro }}" /></td>
+                </tr>
+                <tr>
+                    <td> {{ aluno.numero }}</td>
+                    <td><input type="text" name="numero" value="{{ aluno.numero }}" /></td>
+                </tr>
+                <tr>
+                    <td> {{ aluno.bairro }} </td>
+                    <td><input type="text" name="bairro" value="{{ aluno.bairro }}" /></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" class="btn btn-primary">Enviar</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}" ></script>
 </body>
 </html>

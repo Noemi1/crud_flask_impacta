@@ -3,25 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css')}}">
     <title>Cadastro de Cliente</title>
 </head>
 <body>
-    <h1>Cadastrar Alunos</h1>
-    <form action="/add" class="container" method="POST">
-        <input type="text" name="nome" placeholder="Digite seu nome" />
-        <br />
-        <input type="text" name="email" id="form-email" placeholder="Digite seu e-mail" />
-        <br />
-        <input type="text" name="cep" id="form-cep" placeholder="Digite seu cep" />
-        <br />
-        <input type="text" name="logradouro" id="form-logradouro" placeholder="Digite seu endereço" />
-        <br />
-        <input type="text" name="numero" id="form-numero" placeholder="Digite seu número" />
-        <br />
-        <input type="text" name="bairro" id="form-bairro" placeholder="Digite seu bairro" />
-        <br />
-        <input type="submit" value="Enviar" />
-    </form>
-
+    <div class="container">
+        <h1 align="center">Cadastrar Alunos</h1>
+        <form action="/add" class="container" method="POST">
+            <table class="table table-hover">
+                <tr>
+                    <td>Nome</td>
+                    <td><input type="text" name="nome" placeholder="Digite seu nome" /></td>
+                </tr>
+                <tr>
+                    <td>E-mail</td>
+                    <td><input type="text" name="email" id="form-email" placeholder="Digite seu e-mail" /></td>
+                </tr>
+                <tr>
+                    <td>CEP</td>
+                    <td><input type="text" name="cep" id="form-cep" placeholder="Digite seu cep" /></td>
+                </tr>
+                <tr>
+                    <td>Logradouro</td>
+                    <td><input type="text" name="logradouro" id="form-logradouro" placeholder="Digite seu endereço" /></td>
+                </tr>
+                <tr>
+                    <td>numero</td>
+                    <td><input type="text" name="numero" id="form-numero" placeholder="Digite seu número" /></td>
+                </tr>
+                <tr>
+                    <td>Bairro</td>
+                    <td><input type="text" name="bairro" id="form-bairro" placeholder="Digite seu bairro" /></td>
+                </tr>
+                <tr>
+                    <td><button type="submit" class="btn btn-primary">Enviar</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}" ></script>
 </body>
 </html>
