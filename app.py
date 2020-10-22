@@ -44,25 +44,29 @@ def add():
         return redirect(url_for('index'))
     return render_template('add.html')
 
-'''
 
 @app.route("/edit/<int:id>", methods=['GET','POST'])
 def edit(id):
-    cliente = Cliente.query.get(id)
+    aluno = Aluno.query.get(id)
     if request.method == 'POST':
-        cliente.name = request.form['nome']
-        cliente.comment = request.form['comentario']
+        aluno.nome = request.form['nome']
+        aluno.email = request.form['email']
+        aluno.cep = request.form['cep']
+        aluno.logradouro = request.form['logradouro']
+        aluno.numero = request.form['numero']
+        aluno.bairro = request.form['bairro']
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('edit.html', cliente=cliente)
+    return render_template('edit.html', aluno=aluno)
+
 
 @app.route("/delete/<int:id>")
 def delete(id):
-    cliente = Cliente.query.get(id)
-    db.session.delete(cliente)
+    aluno = Aluno.query.get(id)
+    db.session.delete(aluno)
     db.session.commit()
     return redirect(url_for('index'))
-'''
+
 
 if __name__ == '__main__':
     db.create_all()

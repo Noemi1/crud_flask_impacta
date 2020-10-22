@@ -6,10 +6,14 @@
     <title>Edição de Alunos</title>
 </head>
 <body>
-    <h1>Editar Aluno {{ cliente.name }}</h1>
-    <form action="/edit/{{cliente.id}}" method="POST">
-        <input type="text" name="nome"  value="{{cliente.name}}" />
-        <input type="text" name="comentario" value="{{cliente.comment}}" />
+    <h1>Editar Aluno {{ aluno.nome }}</h1>
+    <form action="/edit/{{ aluno.id }}" method="POST">
+        <input type="text" name="nome" value="{{ aluno.nome }}" />
+        <input type="text" name="email" value="{{ aluno.email }}" />
+        <input type="text" name="cep" value="{{ aluno.cep }}" />
+        <input type="text" name="logradouro" value="{{ aluno.logradouro }}" />
+        <input type="text" name="numero" value="{{ aluno.numero }}" />
+        <input type="text" name="bairro" value="{{ aluno.bairro }}" />
         <br />
         <input type="submit" value="Enviar" />
     </form>
