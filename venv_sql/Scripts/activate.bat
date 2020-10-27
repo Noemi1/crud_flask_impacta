@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set "VIRTUAL_ENV=D:\Henrique Fittipaldi\FACULDADE IMPACTA DE TECNOLOGIA - FIT\3º Semestre\Desenvolvimento de Aplicações Distribuidas\crud_flask\venv_sql"
+set "VIRTUAL_ENV=C:\Users\Lucas\Documents\Noemi\Impacta\Desenvolvimento de Aplicações Distribuidas\crud_flask\venv_sql"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"

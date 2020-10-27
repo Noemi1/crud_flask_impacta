@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.css')}}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/reset.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/alunos.css')}}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" integrity="sha512-F5QTlBqZlvuBEs9LQPqc1iZv2UMxcVXezbHzomzS6Df4MZMClge/8+gXrKw2fl5ysdk4rWjR0vKS7NNkfymaBQ==" crossorigin="anonymous"></script>
+
+    <title>Cadastro de Alunos</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex flex-row align-items-center justify-content-between margin-60">
+            <h1 style="text-align: center;">Cadastro de Alunos</h1>
+            <a href="{{ url_for('alunos_create') }}" class="btn btn-info">
+                <span style="margin-right: 5px;">
+                    <i class="fas fa-plus"></i>
+                </span> Adicionar Aluno
+            </a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th></th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Endereço</th>
+                        <th style="text-align: right;"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for a in alunos %}
+                    <tr>
+                        <td></td>
+                        <td>{{ a.nome }}</td>
+                        <td>{{ a.email }}</td>
+                        <td>{{ a.logradouro }}, {{ a.numero }}, {{ a.bairro }} - {{ a.cep }}</td>
+                        <td style="text-align: right;">
+                            <a href="{{ url_for('alunos_edit', id=a.id) }}" class="btn btn-secondary" title="Editar">
+                                <span>
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                            </a>
+                            <a href="{{ url_for('alunos_delete', id=a.id) }}" class="btn btn-dark" title="Excluir">
+                                <span>
+                                    <i class="fas fa-trash-alt"></i>
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script> -->
+</body>
+
+</html>

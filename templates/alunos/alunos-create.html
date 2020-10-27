@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/bootstrap.css')}}">
     <title>Cadastro de Cliente</title>
 </head>
+
 <body>
     <div class="container">
-        <h1 align="center">Cadastrar Alunos</h1>
-        <form action="/add" class="container" method="POST">
+        <h1 style="text-align: center;">Cadastrar Alunos</h1>
+        <form action="{{ url_for('alunos_create') }}" method="POST">
             <table class="table table-hover">
                 <tr>
                     <td>Nome</td>
@@ -25,7 +27,8 @@
                 </tr>
                 <tr>
                     <td>Logradouro</td>
-                    <td><input type="text" name="logradouro" id="form-logradouro" placeholder="Digite seu endereço" /></td>
+                    <td><input type="text" name="logradouro" id="form-logradouro" placeholder="Digite seu endereço" />
+                    </td>
                 </tr>
                 <tr>
                     <td>numero</td>
@@ -41,6 +44,7 @@
             </table>
         </form>
     </div>
-    <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}" ></script>
+    <script src="{{ url_for('static', filename = 'js/bootstrap.min.js') }}"></script>
 </body>
+
 </html>
