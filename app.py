@@ -10,7 +10,7 @@ db = SQLAlchemy(app)
 
 
 class Aluno(db.Model):  # herdando da classe db.Model que gera a tabela
-    __tablename__ = 'alunoNoemi'
+    __tablename__ = 'alunoNoemi2'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nome = db.Column(db.String(50))
     email = db.Column(db.String(50))
@@ -18,14 +18,18 @@ class Aluno(db.Model):  # herdando da classe db.Model que gera a tabela
     logradouro = db.Column(db.String(50))
     numero = db.Column(db.String(10))
     bairro = db.Column(db.String(50))
+    cidade = db.Column(db.String(50))
+    uf = db.Column(db.String(3))
 
-    def __init__(self, nome, email, cep, logradouro, numero, bairro):
+    def __init__(self, nome, email, cep, logradouro, numero, bairro, cidade, uf):
         self.nome = nome
         self.email = email
         self.cep = cep
         self.logradouro = logradouro
         self.numero = numero
         self.bairro = bairro
+        self.cidade = cidade
+        self.uf = uf
 
 
 @app.route('/')
@@ -47,7 +51,9 @@ def alunos_create():
                         request.form['cep'], 
                         request.form['logradouro'],
                         request.form['numero'], 
-                        request.form['bairro'])
+                        request.form['bairro'],
+                        request.form['cidade'],
+                        request.form['uf'])
 
         db.session.add(aluno)
         db.session.commit()
@@ -67,18 +73,22 @@ def alunos_edit(id):
         aluno.logradouro = request.form['logradouro']
         aluno.numero = request.form['numero']
         aluno.bairro = request.form['bairro']
+        aluno.cidade = request.form['cidade']
+        aluno.uf = request.form['uf']
         db.session.commit()
         return redirect(url_for('alunos'))
         
     return render_template('alunos/alunos-edit.html', aluno=aluno)
 
 
-@app.route('/alunos/delete/<int:id>')
+@app.route('/alunos/delete/<int:id>', methods=['GET','POST'])
 def alunos_delete(id):
     aluno = Aluno.query.get(id)
-    db.session.delete(aluno)
-    db.session.commit()
-    return redirect(url_for('alunos'))
+    if request.method == 'POST':
+        db.session.delete(aluno)
+        db.session.commit()
+        return redirect(url_for('alunos'))
+    return render_template('alunos/alunos-delete.html', aluno=aluno)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,9 @@
+input[readonly],
+select[disabled] {
+    background-color: #fff!important;
+}
+
+input[readonly]:focus,
+select[disabled]:focus {
+    border: none!important;
+}
